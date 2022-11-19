@@ -1,22 +1,29 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Employee = require('./lib/employee');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+const parse = require('node-html-parser').parse;
+
+const team = [];
 
 function init() {
     inquirer
         .prompt([
         {
             type: 'input',
-            name: 'managerName',
+            name: 'employeeName',
             message: "What is the manager's name?",
         },
         {
             type: 'input',
-            name: 'managerId',
+            name: 'id',
             message: "What is the manager's id?",
         },
         {
             type: 'input',
-            name: 'managerEmail',
+            name: 'email',
             message: "What is the manager's email?",
         },
         {
@@ -32,12 +39,15 @@ function init() {
         },
         ])
     .then((answers) => {
+        const teamMember = new Manager(answers.employeeName, answers.id, answers.email, answers.officeNumber);
+        team.push(teamMember);
         if (answers.newMember === 'Yes') {
           addMember();
         } else {
-            console.log("Fail")
+            console.log("No new team selected");
+            console.log(team);
         };
-        console.log(answers)
+        
       }); 
 };
 
@@ -65,17 +75,17 @@ function newEngineer() {
         .prompt([
         {
             type: 'input',
-            name: 'EngineerName',
+            name: 'employeeName',
             message: "What is the engineer's name?",
         },
         {
             type: 'input',
-            name: 'EngineerIid',
+            name: 'id',
             message: "What is the engineer's id?",
         },
         {
             type: 'input',
-            name: 'EngineerEmail',
+            name: 'email',
             message: "What is the engineer's email?",
         },
         {
@@ -91,12 +101,15 @@ function newEngineer() {
         },
         ])
         .then((answers) => {
+            const teamMember = new Engineer(answers.employeeName, answers.id, answers.email, answers.github);
+            team.push(teamMember);
             if (answers.newMember === 'Yes') {
               addMember();
             } else {
-                console.log("Fail")
+                console.log("No new team selected");
+                console.log(team);
             };
-            console.log(answers)
+            
           }); 
 };
 
@@ -105,17 +118,17 @@ function newIntern() {
         .prompt([
         {
             type: 'input',
-            name: 'internName',
+            name: 'employeeName',
             message: "What is the intern's name?",
         },
         {
             type: 'input',
-            name: 'internId',
+            name: 'id',
             message: "What is the intern's id?",
         },
         {
             type: 'input',
-            name: 'internEmail',
+            name: 'email',
             message: "What is the intern's email?",
         },
         {
@@ -131,13 +144,17 @@ function newIntern() {
         },
         ])
         .then((answers) => {
+            const teamMember = new Intern(answers.employeeName, answers.id, answers.email, answers.school);
+            team.push(teamMember);
             if (answers.newMember === 'Yes') {
               addMember();
             } else {
-                console.log("Fail")
+                console.log("No new team selected");
+                console.log(team);
             };
-            console.log(answers)
+            
           }); 
 };
 
 init();
+
