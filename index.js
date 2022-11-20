@@ -179,7 +179,7 @@ function generateCards() {
             let roleCard =             
                 `<div class="card">
                     <div class="container">
-                        <h4 cl    ass="title"><b>${team[i].employeeName}</b></h4>
+                        <h4 class="title"><b>${team[i].employeeName}</b></h4>
                         <h4 class="title"><b>Engineer</b></h4>
                         <ul>
                             <li>ID: ${team[i].id}</li>
@@ -216,7 +216,7 @@ function writeHTML(divEls) {
         if (err) {
             return console.log(err);
         }
-        data = data.replace(/\<\/body>/g, divElsJoin + '</body>');
+        data = data.replace(/\<\/main>/g, divElsJoin + '</main>');
         fs.writeFile('./dist/index.html', data, function (err) {
             if (err) throw err;
         console.log("Success");
