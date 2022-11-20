@@ -175,7 +175,7 @@ function generateCards() {
   
   
     for (let i = 1; i < team.length; i++) {
-        if (team[i].role === "engineer") {
+        if (team[i].role === "Engineer") {
             let roleCard =             
                 `<div class="card">
                     <div class="container">
@@ -212,94 +212,18 @@ function generateCards() {
 function writeHTML(divEls) {
     var divElsJoin = divEls.join("");
     
-    fs.readFile('./dist/index.html', 'utf8', function (err,data) {
+    fs.readFile('./src/template.html', 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
         data = data.replace(/\<\/body>/g, divElsJoin + '</body>');
-        fs.writeFile('./dist/test.html', data, function (err) {
+        fs.writeFile('./dist/index.html', data, function (err) {
             if (err) throw err;
         console.log("Success");
         })
     })
   
   }
-
-// function generateCards() {
-//     fs.readFile('./dist/index.html', 'utf8', function (err,data) {
-//         if (err) {
-//             return console.log(err);
-//         }
-//         let roleCard =         
-//             `<div class="card">
-//                 <div class="container">
-//                     <h4 class="title"><b>${team[0].employeeName}</b></h4>
-//                     <h4 class="title"><b>Manager</b></h4>
-//                     <ul>
-//                         <li>ID: ${team[0].id}</li>
-//                         <li>Email: ${team[0].email}</li>
-//                         <li>Office Number: ${team[0].roleChar}</li>
-//                     </ul>
-//                 </div>
-//             </div>`;
-//         data = data.replace(/\<\/body>/g, roleCard + '</body>');
-//         fs.writeFile('./dist/test.html', data, function (err) {
-//             if (err) throw err;
-//             console.log('Saved!');
-//             });
-//             console.log(data);
-//         });
-
-       
-//     for (let i = 1; i < team.length; i++) {
-//                 fs.readFile('./dist/test.html', 'utf8', function (err,data) {
-//             if (err) {
-//                 return console.log(err);
-//             } 
-
-//         if (team[i].role === "Engineer") {
-//             let roleCard =
-//                 `<div class="card">
-//                      <div class="container">
-//                         <h4 class="title"><b>${team[i].employeeName}</b></h4>
-//                         <h4 class="title"><b>Engineer</b></h4>
-//                         <ul>
-//                             <li>ID: ${team[i].id}</li>
-//                             <li>Email: ${team[i].email}</li>
-//                             <li>Github ${team[i].roleChar}</li>
-//                         </ul>
-//                     </div>
-//                 </div>`;
-//             data = data.replace(/\<\/div>/g, roleCard + '</body>');
-//             fs.writeFile('./dist/test.html', data, function (err) {
-//                 if (err) throw err;
-//                 console.log('Saved!');
-//             });                
-//         } else {
-//             let roleCard = 
-//                 `<div class="card">
-//                     <div class="container">
-//                         <h4 class="title"><b>${team[i].employeeName}</b></h4>
-//                         <h4 class="title"><b>Intern</b></h4>
-//                         <ul>
-//                             <li>ID: ${team[i].id}</li>
-//                             <li>Email: ${team[i].email}</li>
-//                             <li>School: ${team[i].roleChar}</li>
-//                         </ul>
-//                     </div>
-//                 </div>`;
-//             data = data.replace(/\<\/div>/g, roleCard + '</body>');     
-//             fs.writeFile('./dist/test.html', data, function (err) {
-//                 if (err) throw err;
-//                 console.log('Saved!');
-//             }); 
-//         }
-
-//      });   
-//     }
-
-// };
-
 
 init();
 
