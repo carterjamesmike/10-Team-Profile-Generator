@@ -1,3 +1,4 @@
+//Required packages and files
 const inquirer = require('inquirer');
 const fs = require('fs');
 const Employee = require('./lib/employee');
@@ -5,8 +6,10 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
+//Array that houses the user inputed team
 const team = [];
 
+//Prompts for manager input, constructs team member, saves team member into team[], asks user if there are more team members to add. 
 function init() {
     inquirer
         .prompt([
@@ -44,13 +47,12 @@ function init() {
           addMember();
         } else {
             console.log("No new team selected");
-            //console.log(team);
             generateCards();
         };
-        
       }); 
 };
 
+//Asks user what the position of new team member is then calls on function for that team member prompts
 function addMember (){
     inquirer
         .prompt ([
@@ -70,6 +72,7 @@ function addMember (){
          })
 };
 
+//Prompts for engineer input, constructs team member, saves team member into team[], asks user if there are more team members to add 
 function newEngineer() {
     inquirer
         .prompt([
@@ -113,6 +116,7 @@ function newEngineer() {
           }); 
 };
 
+//Prompts for intern input, constructs team member, saves team member into team[], asks user if there are more team members to add 
 function newIntern() {
     inquirer
         .prompt([
@@ -157,6 +161,7 @@ function newIntern() {
           }); 
 };
 
+//Generates HTML cards from user inputs and adds HTML to an array to be called later
 function generateCards() {
     const divEls = [];
     let roleCard =             
@@ -208,14 +213,17 @@ function generateCards() {
   
     writeHTML(divEls)
 }
-  
+
+//Reads template HTML file and writes new index.html.
 function writeHTML(divEls) {
     var divElsJoin = divEls.join("");
     
+    //Reads/copies data from template.html file
     fs.readFile('./src/template.html', 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
+        //Adds HMTL cards from generateCards() and adds them inbetween the <main> element tags, then writes new file into index.html
         data = data.replace(/\<\/main>/g, divElsJoin + '</main>');
         fs.writeFile('./dist/index.html', data, function (err) {
             if (err) throw err;
@@ -225,12 +233,5 @@ function writeHTML(divEls) {
   
   }
 
+//Call init() that initiates the program  
 init();
-
-//To DO
-//Test for generateCards fx and writeHTML fx
-//Styling
-//Walkthrough video
-//Readme file
-//Clean and comment code
-//Gitignore

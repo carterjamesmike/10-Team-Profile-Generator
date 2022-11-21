@@ -1,3 +1,4 @@
+//Required jsfile that will be tested. All tests are described next to corresponding test
 const Employee = require('../lib/employee')
 
 describe("Employee Methods", () => {

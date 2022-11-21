@@ -1,3 +1,4 @@
+//Required jsfile that will be tested. All tests are described next to corresponding test
 const Manager = require('../lib/manager');
 
 describe("Manager Methods", () => {
