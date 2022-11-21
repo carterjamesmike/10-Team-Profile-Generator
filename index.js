@@ -166,7 +166,7 @@ function generateCards() {
                 <h4 class="title"><b>Manager</b></h4>
                 <ul>
                     <li>ID: ${team[0].id}</li>
-                    <li>Email: ${team[0].email}</li>
+                    <li>Email:<a href = "mailto: ${team[0].email}">${team[0].email}</a></li>
                     <li>Office Number: ${team[0].roleChar}</li>
                 </ul>
             </div>
@@ -183,8 +183,8 @@ function generateCards() {
                         <h4 class="title"><b>Engineer</b></h4>
                         <ul>
                             <li>ID: ${team[i].id}</li>
-                            <li>Email: ${team[i].email}</li>
-                            <li>Github: ${team[i].roleChar}</li>
+                            <li>Email:<a href = "mailto: ${team[i].email}">${team[i].email}</a></li>
+                            <li>Github: <a href="https://www.github.com/${team[i].roleChar}">${team[i].roleChar}</a></li>
                         </ul>
                     </div>
                 </div>`;
@@ -197,7 +197,7 @@ function generateCards() {
                         <h4 class="title"><b>Intern</b></h4>
                             <ul>
                                 <li>ID: ${team[i].id}</li>
-                                <li>Email: ${team[i].email}</li>
+                                <li>Email:<a href = "mailto: ${team[i].email}">${team[i].email}</a></li>
                                 <li>School: ${team[i].roleChar}</li>
                             </ul>
                     </div>
@@ -227,3 +227,10 @@ function writeHTML(divEls) {
 
 init();
 
+//To DO
+//Test for generateCards fx and writeHTML fx
+//Styling
+//Walkthrough video
+//Readme file
+//Clean and comment code
+//Gitignore
